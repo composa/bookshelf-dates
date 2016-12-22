@@ -11,7 +11,7 @@ env:
 - DB=memory
 - DB=sqlite3
 script:
-- npm test
+- yarn test
 cache:
   yarn: true
   directories: node_modules
