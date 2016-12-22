@@ -4,12 +4,6 @@ notifications:
   email: false
 node_js:
 - 6.9.1
-services:
-- postgresql
-before_script:
-- psql -c 'create database travis_ci_test;' -U postgres
-- export DATABASE_URL=postgres://postgres@localhost:5432/travis_ci_test
-- npm prune
 env:
 - DB=memory
 - DB=sqlite3
