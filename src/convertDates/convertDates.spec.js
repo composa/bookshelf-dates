@@ -15,4 +15,22 @@ describe('convertDates', () => {
             dateRenamed: 1483225200000
         });
     });
+
+    it('return attrs if empty', () => {
+        const attrs = {};
+
+        const converter = convertDates(['dateDeleted']);
+        const result = converter(attrs);
+
+        return expect(result, 'to equal', attrs);
+    });
+
+    it('return attrs if undefined', () => {
+        const attrs = undefined;
+
+        const converter = convertDates(['dateDeleted']);
+        const result = converter(attrs);
+
+        return expect(result, 'to equal', attrs);
+    });
 });

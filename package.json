@@ -7,7 +7,7 @@
   "scripts": {
     "test": "yarn run test:unit && yarn run test:eslint",
     "test:eslint": "eslint .",
-    "test:unit": "mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js",
+    "test:unit": "nyc mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js",
     "build": "babel src --out-dir distribution",
     "prepublish": "yarn run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -30,6 +30,7 @@
     "knex": "0.12.6",
     "mocha": "3.2.0",
     "mocha-clean": "1.0.0",
+    "nyc": "10.0.0",
     "pg": "6.1.2",
     "semantic-release": "^6.3.2",
     "sqlite3": "3.1.8",
@@ -37,5 +38,27 @@
   },
   "dependencies": {
     "ramda": "0.22.1"
+  },
+  "nyc": {
+    "lines": 99,
+    "statements": 99,
+    "functions": 99,
+    "branches": 99,
+    "exclude": [
+      "coverage",
+      "distribution",
+      "test"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
+    "all": true,
+    "check-coverage": false,
+    "sourceMap": true,
+    "instrument": true
   }
 }
