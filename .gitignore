@@ -38,3 +38,6 @@ jspm_packages
 
 # Dev DB
 dev.sqlite3
+
+# Build folder
+distribution/

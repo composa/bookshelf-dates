@@ -1,7 +1,7 @@
 import { clone } from 'ramda';
 import { bookshelf as orm, knex } from '../db';
 
-import dates from '../../index';
+import dates from '../../src';
 
 describe('configuration', () => {
     // eslint-disable-next-line immutable/no-let

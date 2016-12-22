@@ -1,18 +1,22 @@
 {
   "name": "bookshelf-dates",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Bookshelf plugin for converting dates",
-  "main": "index.js",
+  "main": "distribution/index.js",
   "repository": "git@github.com:composa/bookshelf-dates.git",
   "scripts": {
-    "test": "npm run test:unit && npm run test:eslint",
+    "test": "yarn run test:unit && yarn run test:eslint",
     "test:eslint": "eslint .",
-    "test:unit": "mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js"
+    "test:unit": "nyc mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js",
+    "build": "babel src --out-dir distribution",
+    "prepublish": "yarn run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "Martin Eigenmann <martin@eigenmannmartin.ch>",
   "license": "UNLICENSE",
   "devDependencies": {
     "babel": "6.5.2",
+    "babel-cli": "6.18.0",
     "babel-core": "6.21.0",
     "babel-eslint": "7.1.1",
     "babel-plugin-transform-flow-strip-types": "6.21.0",
@@ -26,10 +30,35 @@
     "knex": "0.12.6",
     "mocha": "3.2.0",
     "mocha-clean": "1.0.0",
+    "nyc": "10.0.0",
+    "pg": "6.1.2",
+    "semantic-release": "^6.3.2",
     "sqlite3": "3.1.8",
     "unexpected": "10.21.0"
   },
   "dependencies": {
     "ramda": "0.22.1"
+  },
+  "nyc": {
+    "lines": 99,
+    "statements": 99,
+    "functions": 99,
+    "branches": 99,
+    "exclude": [
+      "coverage",
+      "distribution",
+      "test"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
+    "all": true,
+    "check-coverage": false,
+    "sourceMap": true,
+    "instrument": true
   }
 }

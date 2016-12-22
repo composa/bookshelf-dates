@@ -1,7 +1,7 @@
 import { assoc, clone } from 'ramda';
 import { bookshelf as orm, knex } from '../db';
 
-import dates from '../../index';
+import dates from '../../src';
 
 describe('parse', () => {
     // eslint-disable-next-line immutable/no-let
@@ -18,7 +18,7 @@ describe('parse', () => {
     });
 
     it('should not override a custom parse function', () => {
-        // GIVEN field config set to dateDeleted and dateRenamed
+        // GIVEN field is config set to dateDeleted and dateRenamed
         bookshelf.plugin(dates, { fields: ['dateDeleted', 'dateRenamed'] });
         // AND convertDates is set
         // AND custom parse function is set
@@ -45,7 +45,7 @@ describe('parse', () => {
     });
 
     it('should not assume anything about the parse function', () => {
-        // GIVEN field config set to dateDeleted and dateRenamed
+        // GIVEN field is config set to dateDeleted and dateRenamed
         bookshelf.plugin(dates, { fields: ['dateDeleted', 'dateRenamed'] });
         // AND convertDates is set
         // AND custom parse function is set
@@ -64,6 +64,28 @@ describe('parse', () => {
             'to satisfy', {
                 attributes: {
                     customAttribut: 'customValue'
+                }
+            }
+        );
+    });
+
+    it('should work without config', () => {
+        // GIVEN field config is not set
+        bookshelf.plugin(dates);
+        // AND convertDates is set to dateDeleted
+        const model = bookshelf.Model.extend({
+            tableName: 'entities',
+            convertDates: ['dateDeleted']
+        });
+
+        return expect(
+            // WHEN model is feched
+            model.where({ id: 4 }).fetch(),
+            'when fulfilled',
+            // THEN dateDeleted sould be a Object
+            'to satisfy', {
+                attributes: {
+                    dateDeleted: new Date('1.1.2017')
                 }
             }
         );

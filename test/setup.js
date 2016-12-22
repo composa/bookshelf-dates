@@ -1,5 +1,5 @@
 // eslint-disable-next-line immutable/no-mutation
-process.env.NODE_ENV = 'test';
+process.env.TZ = 'Europe/Amsterdam';
 
 // Make mocha output clean
 require('mocha-clean');

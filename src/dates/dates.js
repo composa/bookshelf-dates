@@ -2,7 +2,7 @@ import { concat, filter, identity, is, compose } from 'ramda';
 
 import convertDates from '../convertDates';
 
-export default (bookshelf, settings) => {
+export default (bookshelf, settings = {}) => {
     const fields = settings.fields || [];
 
     // Save for later

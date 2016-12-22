@@ -1,19 +1,17 @@
 language: node_js
 sudo: false
+notifications:
+  email: false
 node_js:
 - 6.9.1
-services:
-- postgresql
-- psql -c 'create database travis_ci_test;' -U postgres
-- export DATABASE_URL=postgres://postgres@localhost:5432/travis_ci_test
 env:
-- DB=postgres
 - DB=memory
 - DB=sqlite3
 script:
-- npm test
+- yarn test
 cache:
   yarn: true
   directories: node_modules
 after_success:
+- yarn run semantic-release
 - bash <(curl -s https://codecov.io/bash)
