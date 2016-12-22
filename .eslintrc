@@ -1,0 +1,25 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint-config-infektweb/configs/defaults",
+        "eslint-config-infektweb/configs/es6",
+        "eslint-config-infektweb/configs/node"
+    ],
+    "plugins": [
+        "immutable",
+    ],
+    "rules": {
+        "immutable/no-let": 2,
+        "immutable/no-mutation": 2,
+        "no-param-reassign": 2,
+        "sort-keys": 0
+    },
+    "globals": {
+        "expect": true,
+        "sinon": true
+    },
+    "env": {
+        "node": true,
+        "mocha": true
+    }
+}
