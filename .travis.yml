@@ -4,7 +4,6 @@ notifications:
   email: false
 node_js:
 - 6.9.1
-- 4.2.0
 services:
 - postgresql
 before_script:
@@ -12,7 +11,6 @@ before_script:
 - export DATABASE_URL=postgres://postgres@localhost:5432/travis_ci_test
 - npm prune
 env:
-- DB=postgres
 - DB=memory
 - DB=sqlite3
 script:
