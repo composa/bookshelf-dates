@@ -1,5 +1,5 @@
 {
-  "name": "bookshelf-dates",
+  "name": "@composa/bookshelf-dates",
   "version": "0.0.0-development",
   "description": "Bookshelf plugin for converting dates",
   "main": "distribution/index.js",
