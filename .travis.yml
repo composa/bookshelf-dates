@@ -1,5 +1,7 @@
 language: node_js
 sudo: false
+notifications:
+  email: false
 node_js:
 - 6.9.1
 - 4.2.0
@@ -8,6 +10,7 @@ services:
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - export DATABASE_URL=postgres://postgres@localhost:5432/travis_ci_test
+- npm prune
 env:
 - DB=postgres
 - DB=memory
@@ -18,4 +21,5 @@ cache:
   yarn: true
   directories: node_modules
 after_success:
+- npm run semantic-release
 - bash <(curl -s https://codecov.io/bash)
