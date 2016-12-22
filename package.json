@@ -5,8 +5,8 @@
   "main": "distribution/index.js",
   "repository": "git@github.com:composa/bookshelf-dates.git",
   "scripts": {
-    "test": "yarn run test:unit && yarn run test:eslint",
-    "test:eslint": "eslint .",
+    "test": "yarn run test:unit && yarn run test:lint",
+    "test:lint": "eslint .",
     "test:unit": "nyc mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js",
     "build": "babel src --out-dir distribution",
     "prepublish": "yarn run build",
