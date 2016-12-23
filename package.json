@@ -10,7 +10,7 @@
     "test:unit": "nyc mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js",
     "build": "babel src --out-dir dist",
     "prepublish": "yarn run build",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish --access=public && semantic-release post"
   },
   "author": "Martin Eigenmann <martin@eigenmannmartin.ch>",
   "license": "UNLICENSE",
