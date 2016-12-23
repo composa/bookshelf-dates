@@ -2,6 +2,6 @@ codecov.yml
 coverage/
 dev.sqlite3
 src/
-text/
+test/
 .nyc_output
 .travis.yml
