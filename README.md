@@ -1,13 +1,30 @@
 [![Build Status](https://travis-ci.org/composa/bookshelf-dates.svg?branch=master)](https://travis-ci.org/composa/bookshelf-dates)
 [![codecov](https://codecov.io/gh/composa/bookshelf-dates/branch/master/graph/badge.svg)](https://codecov.io/gh/composa/bookshelf-dates)
 
-Automatically converts dates. So sqlite3, postgres and mysql are unified.
+## bookshelf-dates
+
+Automatically converts SQL dates to JavaScript Date objects.
+
+```javascript
+const user = await User.where({ id: 1 }).fetch();
+user.get('dateSubscribed') === new Date('1.1.2017') // true
+```
 
 ### Installation
 
-After installing `bookshelf-dates` with `yarn add -E @composa/bookshelf-dates`,
-all you need to do is add it as a bookshelf plugin and enable it on your models.
+Install via npm:
+```javascript
+npm install --save @composa/bookshelf-dates
+```
 
+Install via Yarn:
+```javascript
+yarn add @composa/bookshelf-dates
+```
+
+### Usage
+
+Register the plugin:
 
 ```javascript
 import Bookshelf from 'bookshelf';
@@ -15,35 +32,28 @@ import bookshelf-dates from '@composa/bookshelf-dates';
 import Knex from 'knex';
 import knexfile from './knexfile';
 
-const db = process.env.DB || 'development';
-const knex = Knex(knexfile[db]);
+const knex = Knex(knexfile);
 const bookshelf = Bookshelf(knex);
 
-// Add the plugin
 bookshelf.plugin(dates, { fields: ['dateCreated', 'dateDeleted'] });
+```
 
-// Enable it on your models
+Enable it on your models:
+
+```javascript
 const User = bookshelf.Model.extend({
     tableName: 'users',
     convertDates: true
 });
+```
 
-// You can also define local settings
+You can also define local settings:
+
+```javascript
 const User = bookshelf.Model.extend({
     tableName: 'users',
     convertDates: ['dateSubscribed']
 });
-```
-
-
-### Usage
-
-Nothing fancy here, just keep using bookshelf as usual.
-
-```javascript
-// This user is indestructible
-const user = await User.where({ id: 1 }).fetch();
-user.get('dateSubscribed') === new Date('1.1.2017') // true
 ```
 
 ### Testing
