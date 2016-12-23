@@ -40,4 +40,4 @@ jspm_packages
 dev.sqlite3
 
 # Build folder
-distribution/
+dist/

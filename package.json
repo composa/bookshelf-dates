@@ -2,13 +2,13 @@
   "name": "@composa/bookshelf-dates",
   "version": "0.0.0-development",
   "description": "Bookshelf plugin for converting dates",
-  "main": "distribution/index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:composa/bookshelf-dates.git",
   "scripts": {
-    "test": "yarn run test:unit && yarn run test:eslint",
-    "test:eslint": "eslint .",
+    "test": "yarn run test:unit && yarn run test:lint",
+    "test:lint": "eslint .",
     "test:unit": "nyc mocha --compilers js:babel-core/register --require test/setup.js src/**/*.spec.js test/spec/*.js",
-    "build": "babel src --out-dir distribution",
+    "build": "babel src --out-dir dist",
     "prepublish": "yarn run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -46,7 +46,7 @@
     "branches": 99,
     "exclude": [
       "coverage",
-      "distribution",
+      "dist",
       "test"
     ],
     "reporter": [
