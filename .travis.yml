@@ -6,7 +6,6 @@ node_js:
 - 6.9.1
 env:
 - DB=memory
-- DB=sqlite3
 script:
 - yarn test
 cache:
