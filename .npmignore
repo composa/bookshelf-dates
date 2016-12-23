@@ -1,0 +1,7 @@
+codecov.yml
+coverage/
+dev.sqlite3
+src/
+test/
+.nyc_output
+.travis.yml
