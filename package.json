@@ -1,6 +1,6 @@
 {
   "name": "@composa/bookshelf-dates",
-  "version": "0.0.0-development",
+  "version": "1.0.3",
   "description": "Bookshelf plugin for converting dates",
   "main": "dist/index.js",
   "repository": "git@github.com:composa/bookshelf-dates.git",
